@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <title>Dungeons and Dragons</title>
 </head>
-<body class="light-theme" aria-label="O site está utilizando o tema light">
+<body class="dark-theme" aria-label="O site está utilizando o tema light">
     <header>
         <audio id="music" autoplay>
             <source src="assets/music/assets_musics_normal-world.mpeg">
@@ -121,5 +121,13 @@
         </p>
         <img src="assets/images/logoFooter.svg" alt="imagem do rodapé">
     </footer>
+    <script type="module" src="main.js"></script>
+    <script>
+        function switchTheme(){
+            document.body.classList.toggle('dark-theme');
+            document.body.classList.toggle('light-theme');
+
+        }
+    </script>
 </body>
 </html>
