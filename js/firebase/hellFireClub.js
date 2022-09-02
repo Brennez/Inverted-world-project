@@ -1,7 +1,7 @@
 import app from "../firebase/app.js"
 
 // Importa os módulos do serviço que estamos usando neste caso o firestore
-import {getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js'
+import {getFirestore, collection, addDoc, getDocs } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js'
 
 export async function subscribeToHellFireClube(subscription){
     //Pega o banco de dados e passa como parametro o app e retorna o banco 
@@ -20,7 +20,8 @@ export async function subscribeToHellFireClube(subscription){
 export async function getHellFireClubColletctions(){
         const db = getFirestore(app);
         const hellFireClubCollection = collection(db, "hellfire-club");
-        const subscriptions = hellFireClubCollection.docs.map(doc => doc.data());
+        const hellFireClubCollectionSnapshot = await getDocs(hellFireClubCollection);
+        const subscriptions = hellFireClubCollectionSnapshot.docs.map(doc => doc.data());
         return subscriptions;
 }
 

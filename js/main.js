@@ -1,4 +1,4 @@
-import {subscribeToHellFireClube} from '../js/firebase/hellFireClub.js'; //importa o controller
+import {getHellFireClubColletctions, subscribeToHellFireClube} from '../js/firebase/hellFireClub.js'; //importa o controller
 
 const txtName = document.getElementById("txtName");
 
@@ -9,6 +9,8 @@ const txtLevel = document.getElementById("txtLevel");
 const txtCharacter = document.getElementById("txtCharacter");
 
 const btnSubscribe = document.getElementById("btnSubscribe");
+
+const subscriptionList = document.getElementById("subscriptions");
 
 btnSubscribe.addEventListener('click', async ()=> {
     const subscription ={
@@ -27,5 +29,17 @@ btnSubscribe.addEventListener('click', async ()=> {
 
 })
 
+async function loadData(){
+    const subscriptions = await getHellFireClubColletctions();
+
+    // subscriptionList.innerHTML = subscriptions.map(sub => `
+    //     <li>
+    //         ${sub.name}
+    //     </li>
+    // `).join(" ")
+    // console.log(subscriptions);
+}
+
+loadData();
 
 
